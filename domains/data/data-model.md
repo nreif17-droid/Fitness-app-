@@ -34,6 +34,20 @@ row = pure self-serve, AI-only, admin has no special access. Everything
 else in this schema (programs, logs, coach memory) is identical either way
 — this table is the only thing that distinguishes the two modes.
 
+**Decided 2026-08-10** (see `logs/decisions.md`): the AI acts autonomously
+for coached clients exactly as it does for self-serve users — **no
+approval gate**, admin visibility/override is after-the-fact via
+`CoachDecisionLog`, not a review step blocking what the client sees. The
+one thing a `CoachClientRelationship` adds beyond visibility is a direct
+line to the admin:
+
+**CoachMessage**
+`id, coach_client_relationship_id, sender (client/admin), body, sent_at, read_at`
+
+A simple in-app thread between a coached client and the admin, available
+alongside (not instead of) full AI access. Only exists where a
+`CoachClientRelationship` exists — self-serve users have no one to message.
+
 ## Goals
 
 **Goal**
@@ -50,6 +64,41 @@ program — see `domains/ai-coach/orchestration.md`.
 
 **ProgramInstance** — a template assigned to a specific user
 `id, user_id, template_id, secondary_template_id (nullable — maintenance-dose pairing), start_date, current_week, status (active/completed/abandoned), adaptations_log (JSON — every deviation from the template and why)`
+
+## Monetization / entitlements
+
+**Decided 2026-08-10** (see `logs/decisions.md`): tiered, per-modality
+unlocks, mapped directly onto the block boundaries every program in the
+knowledge base already uses (`00-framework.md` — Accumulate Wks 1–4,
+Intensify Wks 5–8, Realize/Taper Wks 9–12). This is a system-wide rule off
+Part 0, not a per-template field:
+
+| Tier | Price | Unlocks | Depth |
+|---|---|---|---|
+| Free | — | Weeks 1–4 of any modality | Basic — gets someone started |
+| Tier 1 | $18 / modality | Weeks 1–8 | More refined, more escalating |
+| Tier 2 | $45 / modality | Full 12 weeks + ongoing adaptation | Fully tailored, continues past Wk 12 |
+| Pro | $200 / yr | Tier 2 depth on **all** modalities | Everything |
+
+Free-tier tracking (nutrition/sleep/weight logging) is **not** gated —
+every user gets full logging regardless of tier; only program depth is
+paywalled.
+
+**Entitlement**
+`id, user_id, modality (nullable — null means Pro, all modalities), tier (free/tier_1/tier_2/pro), granted_at, price_paid_cents, expires_at (nullable), source (purchase/comp/admin_grant)`
+
+A user with no `Entitlement` row for a modality still gets the free tier by
+default (no row required). `ProgramInstance`/`Session` generation checks
+the relevant `Entitlement.tier` to decide how many weeks to reveal and
+whether adaptation continues past Week 12.
+
+**Open, not yet decided (see `logs/decisions.md`):**
+- Does Tier 1/Tier 2 access expire, or is it owned permanently once
+  purchased (including ongoing post-Wk-12 adaptation on Tier 2)? This is
+  what `expires_at` is for, but whether it's ever populated is undecided.
+- Whether v0 actually builds all 13 modalities × Tier 1/Tier 2 (26 SKUs)
+  plus Pro, or starts with less granularity and expands — the tier
+  *concept* is decided, this is about build sequencing.
 
 **Session** (planned) — one prescribed workout, generated from a
 ProgramInstance for a specific date
@@ -110,10 +159,6 @@ for auditability and for the user to see "why did my program change"
   multi-tenancy) — not planned for v0 (`CoachClientRelationship.admin_user_id`
   is written generically enough to extend later, but nothing above assumes
   more than one admin exists).
-- Exact permission boundary for the admin on a coached client: full
-  read/write override on everything, or read-only visibility with the AI
-  still making changes unless the admin explicitly intervenes? Affects how
-  `CoachDecisionLog` attributes a change (AI vs. admin) — not designed yet.
 - Whether ProgramInstance supports true hybrid/custom programs the coach
   assembles dynamically, vs. only ever assigning one of the fixed templates.
   The knowledge base is written as fixed 12-week templates; a coach that

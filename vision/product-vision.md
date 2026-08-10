@@ -66,11 +66,22 @@ The two modes share the same knowledge base, data model, and AI
 orchestration; the difference is a permissions/visibility layer on specific
 client relationships, not a fork of the product.
 
+## Monetization
+
+**Decided 2026-08-10** (see `logs/decisions.md`): tiered, per-modality
+unlocks mapped onto the existing 12-week block structure — Free (Wks 1–4),
+Tier 1 $18 (Wks 1–8), Tier 2 $45 (full 12 wks + ongoing adaptation), Pro
+$200/yr (Tier 2 on every modality). Full logging (nutrition/sleep/weight)
+is free regardless of tier — only program depth is paywalled. See
+`domains/data/data-model.md` ("Monetization / entitlements") for the
+schema. Two implementation details still open: whether paid tiers expire,
+and whether v0 builds all 26 modality×tier SKUs at once or starts smaller.
+
 ## Not yet decided (flag for a real conversation, not a default)
 
-- Initial wedge modality to launch with
-- Monetization model (and whether it differs between self-serve users and
-  the owner's directly-coached clients)
+- Initial wedge modality to launch with — actively being worked through
+  with the owner's own background/audience as an input, not yet landed
 - Native app vs. web app vs. both
 - Whether the admin/coaching layer ever opens up to other coaches
   (multi-tenant) — not planned for now, flagged in case it comes up
+- Tier expiry semantics and SKU build sequencing (see Monetization above)

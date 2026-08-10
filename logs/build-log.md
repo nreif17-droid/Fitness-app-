@@ -4,6 +4,25 @@ Session-by-session record. Newest entry on top.
 
 ---
 
+### 2026-08-10 — Monetization tiers + admin-oversight boundary decided
+Two more decisions resolved with the user. Monetization: tiered per-modality
+unlocks (Free = Wks 1–4, $18 Tier 1 = Wks 1–8, $45 Tier 2 = full 12 wks +
+ongoing, $200/yr Pro = Tier 2 everywhere) — maps directly onto the existing
+Accumulate/Intensify/Realize block boundaries in the knowledge base, so it's
+a paywall on content that already exists. Admin oversight: no approval
+gate — AI acts the same for self-serve and coached users, admin gets
+after-the-fact visibility/override plus a new direct-messaging channel to
+coached clients. Added `Entitlement` and `CoachMessage` to
+`domains/data/data-model.md`, updated `vision/product-vision.md` and
+`domains/ai-coach/orchestration.md` to match. Full reasoning in
+`logs/decisions.md`.
+
+**Next:** land the launch-wedge-modality conversation (in progress —
+exploring the owner's own background/audience as an input); decide tier
+expiry semantics and SKU build sequencing; connect to Base44.
+
+---
+
 ### 2026-08-10 — Corrected target-user decision: B2C self-serve + owner's coaching layer
 The "coach-facing tool" decision from earlier this session was wrong — user
 corrected it directly. Actual shape: primary product is public, self-serve

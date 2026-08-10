@@ -91,3 +91,44 @@ between self-serve and coached users); native vs. web; whether the
 admin/coaching layer ever opens to other coaches; exact AI/admin
 permission boundary on a coached client; Base44 GitHub sync/export/
 plan-gating verification.
+
+---
+
+### 2026-08-10 — Monetization model and admin-oversight boundary decided
+
+**Decision 3: monetization is tiered, per-modality unlocks**, mapped onto
+the 12-week block structure already in the knowledge base:
+- **Free** — Weeks 1–4 of any modality (Accumulate block). Basic, gets
+  someone started. Full logging (nutrition/sleep/weight) is free regardless
+  of tier.
+- **Tier 1 — $18/modality** — Weeks 1–8 (Accumulate + Intensify). More
+  refined, escalating.
+- **Tier 2 — $45/modality** — full 12 weeks, fully tailored, continues
+  adapting past Week 12.
+- **Pro — $200/yr** — Tier 2 depth on every modality.
+Reasoning: user's explicit design, volunteered unprompted. Maps cleanly
+onto content that already exists (Part 0's Accumulate/Intensify/Realize
+boundaries), so it's a paywall on existing content, not a content rewrite.
+Updated: `vision/product-vision.md` (new "Monetization" section),
+`domains/data/data-model.md` (new "Monetization / entitlements" section:
+`Entitlement`).
+**Still open:** whether Tier 1/Tier 2 access ever expires (`expires_at` is
+modeled but not decided), and whether v0 builds all 26 modality×tier SKUs
+at once or starts smaller.
+
+**Decision 4: no approval gate for admin-coached clients.** The AI acts
+identically for self-serve and coached users — same autonomy, no
+"admin reviews before the client sees it" step. The admin's
+`CoachClientRelationship` adds after-the-fact visibility/override
+(`CoachDecisionLog`) plus a **direct in-app messaging channel** to the
+admin, available alongside full AI access, not instead of it.
+Reasoning: user's explicit call when asked directly.
+Updated: `domains/ai-coach/orchestration.md` ("Not yet designed" — admin-
+coached path, now resolved), `domains/data/data-model.md` (new
+`CoachMessage` entity, removed the now-resolved permission-boundary open
+question).
+
+Still open: initial wedge modality (actively being explored — the owner's
+own background/audience is a live input, not yet landed); native vs. web;
+multi-tenant coaching (not planned); tier expiry semantics and SKU build
+sequencing; Base44 GitHub sync/export/plan-gating verification.
