@@ -56,3 +56,9 @@ Practically, that means work in this repo tends to fall into two modes:
   full-stack knowledge until verified.
 - Confirm current pricing tier needed for code export / GitHub connection,
   since that gates whether code mode is available at all yet.
+- **New, 2026-08-10:** confirm whether Base44's built-in integrations cover
+  live video calls and hosted video content, or whether the planned
+  `domains/community/` feature needs a third-party integration (Zoom/Meet
+  for live calls, Vimeo/YouTube-unlisted or similar for video hosting) —
+  the "20+ services" integration list above is the starting point to check
+  against current docs, not an assumption that it's already covered.

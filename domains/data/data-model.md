@@ -7,7 +7,16 @@ with once real screens get built in Base44. Every entity below assumes a
 ## Identity & profile
 
 **User**
-`id, name, email, auth_provider, timezone, units_preference (imperial/metric), created_at`
+`id, name, email, auth_provider, timezone, units_preference (imperial/metric), marketing_opt_in (boolean, explicit opt-in — not defaulted true), created_at`
+
+**Decided 2026-08-10** (see `logs/decisions.md`): every signup, including
+pure free-tier self-serve users, is a potential lead for the owner's real
+coaching practice. `marketing_opt_in` gates whether the admin can include a
+user in outreach — must be an explicit opt-in captured at signup (with
+a visible unsubscribe path once it's in use), not assumed from having an
+email on file. This is a compliance requirement (CAN-SPAM/GDPR-shaped), not
+an implementation nicety — flagging it so it doesn't get skipped under
+deadline pressure.
 
 **AthleteProfile**
 `user_id, age, height, bodyweight_current, training_age_years, sex_for_physiology (distinct from identity fields — used only for load/heart-rate/nutrition physiology, never surfaced as a label), injury_history (free text + structured flags), equipment_access (home/gym/outdoor), primary_modality, secondary_modality`
@@ -72,6 +81,29 @@ raise it deliberately for a code meant to be shared.
 comp'd `Entitlement` from decision get revoked, or does it persist
 permanently since "they already paid"? Worth a real answer before this
 matters in practice, not a default.
+
+### Coaching community (new, sketched not designed — see `domains/community/README.md`)
+
+**New idea, 2026-08-10** (see `logs/decisions.md`): coursework/video
+content, live 1:1 or group calls, and a forum, for the admin's coaching
+practice on top of the AI-coach product. Sketched only — not built:
+
+`CourseContent` — `id, admin_user_id, title, type (video/article/download), body_or_url, published_at`
+`LiveSession` — `id, admin_user_id, title, format (1:1/group), scheduled_at, meeting_link, capacity (nullable)`
+`LiveSessionAttendee` — `id, live_session_id, user_id, rsvp_status`
+`ForumThread` / `ForumPost` — `id, author_user_id, thread_id (for posts), title (threads only), body, created_at`
+
+**Open, not yet decided:**
+- **Access gating** — is community access a benefit bundled with being one
+  of the admin's personal `CoachClientRelationship` clients specifically,
+  or a separately purchasable membership anyone (including a self-serve
+  Pro subscriber who's never talked to the admin) could buy? These are
+  different products with different scope.
+- **Video hosting and live-call infrastructure are probably not native to
+  what Base44 generates** — likely needs a third-party integration (e.g.
+  Zoom/Meet for live calls, Vimeo/YouTube-unlisted or Mux for video). Not
+  confirmed — see the open Base44 capability questions in
+  `domains/platform/base44-architecture.md`.
 
 ## Goals
 

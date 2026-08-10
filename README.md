@@ -25,6 +25,8 @@ This follows the same shape as your other repos (`vision/ domains/ logs/ agents/
   /nutrition/
   /sleep/
   /goals/
+  /community/        — coursework/live calls/forum for the owner's coaching
+                       practice (new, sketched not built — see its README)
   /ai-coach/         — how personalization/orchestration actually works
   /data/             — data model / schema
 /agents/             — agent persona + operating instructions for Claude Code

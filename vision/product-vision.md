@@ -85,16 +85,40 @@ free, no gates at all** — they've already paid the owner directly, offline,
 for coaching. They redeem a personal code from the owner during onboarding
 instead of paying in-app. See `CoachInviteCode` in `data-model.md`.
 
+## Coaching services & community (new, 2026-08-10)
+
+Beyond the AI-coach product, the owner (certified personal trainer,
+currently zero active clients) wants this platform to also be the funnel
+and operating system for a real coaching practice:
+
+- **Lead capture** — every signup (including free-tier self-serve users)
+  who opts in (`User.marketing_opt_in`) is a prospect for the owner's real
+  coaching membership, not just an app user. See `data-model.md`.
+- **Community** — coursework/video, live 1:1 or group calls, and a forum
+  for paying members. Sketched, not designed — see
+  `domains/community/README.md`. Real open questions there: who gets
+  access, and whether Base44 natively supports live video/hosting.
+- **Human services beyond the AI** — things that need judgment or presence
+  the AI can't provide: video form/technique review, event/competition
+  prep (several knowledge-base programs already have peaking blocks built
+  for this), human-reviewed nutrition, live accountability check-ins.
+  Not designed yet, listed here so it isn't lost.
+
 ## Not yet decided (flag for a real conversation, not a default)
 
-- Initial wedge modality to launch with — actively being worked through.
-  No meaningful existing audience to leverage (owner currently has ~340
-  low-interaction Instagram followers and zero clients), so this is a
-  from-zero launch, not an audience-arbitrage play — the wedge needs to
-  come from somewhere else (personal expertise/authenticity, or just
-  proving out via the free tier and following the retention data)
+- **Initial wedge modality — recommended, not yet confirmed:** owner has
+  no meaningful existing audience (~340 low-interaction Instagram
+  followers, zero clients) and no real combat-sports/Shaolin background
+  (an interest, not lived expertise) — but *is* a certified personal
+  trainer and a genuine hybrid athlete. Recommendation: lead with
+  **Hybrid Training** (`04-hybrid-training.md`) as the launch wedge,
+  marketed on real credential + real identity, rather than an audience
+  that doesn't exist yet or an interest that isn't expertise yet. Awaiting
+  the owner's confirmation before this is logged as decided.
 - Native app vs. web app vs. both
 - Whether the admin/coaching layer ever opens up to other coaches
   (multi-tenant) — not planned for now, flagged in case it comes up
 - SKU build sequencing (all 26 modality×tier combos at once, or fewer to
   start) — tier expiry is resolved, this is just build order
+- Community access gating and build sequencing (see
+  `domains/community/README.md`)

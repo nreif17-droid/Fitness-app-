@@ -43,6 +43,17 @@ as grounding context, not rely on the model's general training.
    not encouraging — a coach that never tells someone to back off isn't
    a coach.
 
+## Adjacent but not an AI job
+
+**Lead-nurture outreach and the community features (`domains/community/`)
+are not part of the AI coach's three jobs above.** They're admin-run,
+human-side features — the AI's scope stays programming, adaptation, and
+guardrails; marketing outreach and live/community coaching are the owner
+operating a coaching business on top of what the AI produces, not
+something the AI does. Keep this boundary clean so "grounded in the
+knowledge base" doesn't quietly expand into "also writes marketing copy"
+or "also runs the forum."
+
 ## Guardrails worth deciding early, not late
 
 - **The coach should not silently override red-flag signals.** If logged

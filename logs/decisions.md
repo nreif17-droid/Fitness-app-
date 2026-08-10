@@ -193,3 +193,42 @@ Still open: initial wedge modality; native vs. web; multi-tenant coaching
 (not planned); SKU build sequencing; whether comped entitlements survive
 the coaching relationship ending; Base44 GitHub sync/export/plan-gating
 verification.
+
+---
+
+### 2026-08-10 — Real background clarified; lead capture decided; community proposed
+
+**Background clarified (not combat sports):** owner's real background is
+**certified personal trainer + genuine hybrid athlete**; combat
+sports/Shaolin is an interest, not lived expertise. Recommendation given
+to lead the launch wedge with **Hybrid Training** (`04-hybrid-training.md`)
+on that real credential/identity — logged as a recommendation in
+`vision/product-vision.md`, not yet confirmed by the owner, so **not**
+counted as a resolved decision.
+
+**Decision 7: lead capture for the owner's real coaching practice.** Every
+signup, including free-tier self-serve users, is a prospect. Added
+`User.marketing_opt_in` (explicit opt-in, not defaulted true — compliance
+requirement, flagged as such) so the admin can build an outreach list.
+Reasoning: user's explicit, unambiguous ask.
+Updated: `domains/data/data-model.md` (User fields).
+
+**New idea, not yet a decision: coaching community** — coursework/video,
+live 1:1/group calls, forum, for the owner's paying coaching clients.
+Sketched (not designed) in a new `domains/community/README.md` and in
+`data-model.md` (`CourseContent`, `LiveSession`, `LiveSessionAttendee`,
+`ForumThread`/`ForumPost`). Two real open questions raised, not resolved:
+whether access is bundled with `CoachClientRelationship` specifically or a
+separate purchasable membership, and whether Base44 natively supports live
+video/hosting (flagged in `domains/platform/base44-architecture.md`
+alongside its other unverified platform questions).
+Updated: `README.md` (folder structure), `domains/ai-coach/orchestration.md`
+(new "Adjacent but not an AI job" section — outreach/community are
+human-run, not part of the AI coach's three jobs).
+
+Still open: initial wedge modality (recommendation given, awaiting
+confirmation); native vs. web; multi-tenant coaching (not planned); SKU
+build sequencing; whether comped entitlements survive the coaching
+relationship ending; community access gating; community/live-video
+technical feasibility on Base44; Base44 GitHub sync/export/plan-gating
+verification.

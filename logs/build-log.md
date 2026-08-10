@@ -4,6 +4,25 @@ Session-by-session record. Newest entry on top.
 
 ---
 
+### 2026-08-10 — Background clarified, lead capture built, community proposed
+Owner's real background: certified personal trainer + genuine hybrid
+athlete, not combat sports (that's an interest, not expertise). Recommended
+Hybrid Training as the launch wedge on that basis — proposed in
+`vision/product-vision.md`, awaiting confirmation, not logged as decided.
+Built lead capture (`User.marketing_opt_in`) for the owner's real coaching
+funnel. Sketched a new Community domain (coursework/video, live calls,
+forum) in a new `domains/community/README.md` plus lightweight entities in
+`data-model.md` — flagged two real open questions (access gating, Base44
+video/live-call capability) rather than guessing. Added an "Adjacent but
+not an AI job" note to `orchestration.md` to keep outreach/community
+scoped as human-run, separate from the AI coach's three jobs.
+
+**Next:** get the wedge recommendation confirmed or redirected; decide
+community access gating; verify Base44's video/live-call capability;
+connect to Base44.
+
+---
+
 ### 2026-08-10 — Tier expiry resolved; wedge still open, audience context gathered
 Tier 1 ($18) / Tier 2 ($45) per-modality unlocks are permanent, no expiry —
 buy once, own it forever on that account. Pro ($200/yr) is the only tier
