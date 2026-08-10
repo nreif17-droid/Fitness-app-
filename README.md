@@ -20,15 +20,22 @@ This follows the same shape as your other repos (`vision/ domains/ logs/ agents/
 /vision/            — what this is, who it's for, what makes it different
 /domains/           — the functional areas of the product
   /training/
-    knowledge-base/ — the 12-week program library, one file per modality —
+    knowledge-base/ — the 12-week program library, one file per modality,
+                       plus evidence updates and special populations —
                        this is what the AI coach draws on to build programs
   /nutrition/
+    knowledge-base/ — energy balance, protein, body composition,
+                       supplements, and the scope-of-practice limits
   /sleep/
+    knowledge-base/ — sleep science and the recovery/readiness logic that
+                       drives autoregulation
   /goals/
   /community/        — coursework/live calls/forum for the owner's coaching
-                       practice (new, sketched not built — see its README)
-  /ai-coach/         — how personalization/orchestration actually works
+                       practice (DEFERRED — spec only, do not build)
+  /ai-coach/         — how personalization/orchestration actually works,
+                       plus the adherence/behavior-change principles
   /data/             — data model / schema
+  /platform/         — Base44 architecture notes + the build playbook
 /agents/             — agent persona + operating instructions for Claude Code
 /logs/               — decisions and build history
 ```
@@ -38,7 +45,13 @@ This follows the same shape as your other repos (`vision/ domains/ logs/ agents/
 1. `vision/product-vision.md` — the pitch and what "done" looks like
 2. `domains/data/data-model.md` — the core entities everything else hangs off
 3. `domains/ai-coach/orchestration.md` — how the coach actually personalizes
-4. `agents/CLAUDE.md` — how the agent working in this repo should operate
+4. `domains/platform/base44-build-playbook.md` — **how to actually get quality
+   output from Base44**, and where its limits sit relative to this product
+5. `agents/CLAUDE.md` — how the agent working in this repo should operate
+
+**Before building anything that outputs nutrition advice**, read
+`domains/nutrition/knowledge-base/03-safety-and-scope.md` — it describes limits the
+product must enforce, and an open legal question that isn't settled.
 
 ## Getting this live
 

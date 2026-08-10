@@ -4,6 +4,33 @@ Session-by-session record. Newest entry on top.
 
 ---
 
+### 2026-08-10 — Major research expansion + Base44 build playbook
+Owner asked for maximum-depth research to grow the knowledge base and for
+research into getting quality output from Base44. Added 8 files:
+nutrition knowledge base (4 files — was a 16-line stub), sleep/recovery
+knowledge base (2 files — same), training evidence updates and special
+populations, adherence/behavior change, and the Base44 build playbook.
+All sourced inline.
+
+Five findings that change existing assumptions, not just add to them:
+1. **Nutrition prescription may exceed the owner's CPT scope of practice** —
+   needs legal review; three postures laid out, none chosen. Blocking for
+   nutrition features. v0 could ship training + tracking without it.
+2. **HRV is much weaker than marketed** — doesn't reliably predict
+   overreaching. Weight subjective readiness and RPE drift above it.
+3. **Cycle-syncing is not evidence-supported** — do not build it.
+4. **The library's frequency claim for hypertrophy is overstated** —
+   corrected in `17-evidence-updates.md`, original library left intact.
+5. **Base44's documented weakness (complex conditional logic, edge cases)
+   is exactly the shape of program generation and safety gating** — hence
+   the playbook's core recommendation to split the build.
+
+**Next:** owner has revealed an existing partially-built Base44 app —
+needs assessment against these docs before deciding rebuild vs. refactor.
+Then: scope-of-practice legal question; connect repo to Base44.
+
+---
+
 ### 2026-08-10 — Wedge confirmed; community deferred; opt-in UX confirmed
 Owner confirmed the Hybrid Training wedge recommendation — now decided,
 promoted into its own "Launch wedge" section in `vision/product-vision.md`.

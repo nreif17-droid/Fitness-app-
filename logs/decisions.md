@@ -305,3 +305,69 @@ Still open: native vs. web; multi-tenant coaching (not planned); SKU build
 sequencing; community build sequencing and Base44 live-video/hosting
 feasibility (both dormant until community is revisited); Base44 GitHub
 sync/export/plan-gating verification.
+
+---
+
+### 2026-08-10 — Research expansion: nutrition, sleep/recovery, adherence, Base44 build strategy
+
+**Not a decision — a substantial knowledge-base expansion** requested by the owner
+("maximum launch research"), plus research into getting quality output from Base44.
+
+**Added, with sources cited inline:**
+- `domains/nutrition/knowledge-base/` (4 files) — the domain was a 16-line stub despite
+  being named in the product pitch. Now covers energy balance, protein, body
+  composition rates, supplements, and scope of practice.
+- `domains/sleep/knowledge-base/` (2 files) — same situation. Sleep science, and the
+  recovery/readiness logic that drives autoregulation.
+- `domains/training/knowledge-base/17-evidence-updates.md` and
+  `18-special-populations.md`
+- `domains/ai-coach/adherence-and-behavior-change.md`
+- `domains/platform/base44-build-playbook.md`
+
+**Findings that change existing product assumptions (not just additive):**
+
+1. **Nutrition prescription may be outside the owner's scope of practice.** The owner
+   is a CPT, not an RD. Generating individualized calorie/macro targets resembles
+   prescribing an individualized meal plan, which is restricted in some US states and
+   is a liability exposure regardless of licensure regime. **Three postures are laid
+   out in `nutrition/knowledge-base/03-safety-and-scope.md` §1; none is chosen.** This
+   needs legal review, not an engineering default. It is genuinely viable to ship v0
+   with training + tracking and no generated nutrition targets.
+
+2. **HRV is substantially less reliable than fitness-tech marketing implies** — it does
+   not reliably predict overreaching (the exact use case it's marketed for), RMSSD has
+   many confounders, paradoxical rises under stress are documented, and it saturates in
+   trained athletes. The autoregulation loop should weight subjective readiness and RPE
+   drift above HRV. Wearables are an enhancement, not a prerequisite.
+
+3. **Cycle-syncing is not evidence-supported.** Do not build cycle-phase-based program
+   generation — recent reviews find no effect of cycle phase on strength performance or
+   adaptation. Building it would contradict the product's core differentiator.
+
+4. **The library's "2x/week frequency beats 1x at equal volume" claim is overstated for
+   hypertrophy** per the 2025 dose-response meta-regression (frequency effect is
+   negligible for hypertrophy, positive for strength). Corrected in `17-evidence-updates.md`
+   rather than edited in place in `02-bodybuilding.md`, so the original library stays intact.
+
+5. **Base44's documented weakness is complex conditional business logic and edge
+   cases** — which is precisely the shape of periodized program generation, entitlement
+   gating, and safety refusals. The playbook's central recommendation is to split the
+   build: let Base44 generate the ordinary CRUD 80%, and keep the hard 20% (coaching
+   logic, safety rules) as explicit, testable, deterministic logic rather than
+   improvised generation.
+
+**Recommendation logged, not decided:** treat Base44 as a genuine build target but keep
+the coaching logic and knowledge base in this repo as source of truth, so the hardest-
+to-rebuild asset never lives only inside the platform (playbook §5, option b→c).
+
+**Verification gap:** `docs.base44.com` was not reachable from the research environment
+(network egress policy). Base44 platform specifics in the playbook are drawn from
+public marketing content and third-party reviews, and still need confirmation against
+current docs — same standing caution as `base44-architecture.md`.
+
+**New open questions raised:** scope-of-practice posture (blocking for nutrition
+features); whether v0 ships nutrition prescription at all; which wearable integrations,
+if any; how readiness is presented (composite score vs. components); what the coach
+does when it detects disengagement; whether adherence data feeds the owner's outreach
+funnel (tone risk); supplement recommendations vs. future affiliate revenue (conflict
+of interest).
