@@ -4,6 +4,23 @@ Session-by-session record. Newest entry on top.
 
 ---
 
+### 2026-08-10 — Comped access persistence + community gating resolved
+Two more open questions closed. Comped app access (from a `CoachInviteCode`
+redemption) is permanent even after the coaching relationship ends — matches
+how purchased Tier 1/2 unlocks already work. What's tied to the
+relationship specifically (`CoachMessage`, community access) ends with it.
+This also fully resolves community access gating: it's exclusively an
+active-coaching-client benefit, no separate purchasable membership in v0.
+Updated `data-model.md`, `domains/community/README.md`,
+`vision/product-vision.md`. Owner also reconfirmed no Shaolin/combat-sports
+background — doesn't change the Hybrid Training wedge recommendation,
+still awaiting explicit confirmation.
+
+**Next:** get the wedge recommendation confirmed or redirected; verify
+Base44's video/live-call capability; connect to Base44.
+
+---
+
 ### 2026-08-10 — Background clarified, lead capture built, community proposed
 Owner's real background: certified personal trainer + genuine hybrid
 athlete, not combat sports (that's an interest, not expertise). Recommended

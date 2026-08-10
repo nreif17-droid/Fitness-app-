@@ -56,6 +56,9 @@ line to the admin:
 A simple in-app thread between a coached client and the admin, available
 alongside (not instead of) full AI access. Only exists where a
 `CoachClientRelationship` exists — self-serve users have no one to message.
+**Decided 2026-08-10:** gated on `CoachClientRelationship.status: active`
+specifically — if the relationship ends, messaging access ends with it
+(see below; this is different from the comped app access, which persists).
 
 **Decided 2026-08-10** (see `logs/decisions.md`): personal clients — people
 who paid the admin directly, offline, for coaching — get **the entire app
@@ -76,11 +79,13 @@ access, every modality, no purchase. `max_redemptions` defaults to 1 (one
 code per client) so a leaked code can't be reused broadly; the admin can
 raise it deliberately for a code meant to be shared.
 
-**Open, not yet decided:** if a `CoachClientRelationship` later ends
-(`status: ended` — the person stops being a coaching client), does the
-comp'd `Entitlement` from decision get revoked, or does it persist
-permanently since "they already paid"? Worth a real answer before this
-matters in practice, not a default.
+**Decided 2026-08-10** (see `logs/decisions.md`): if a
+`CoachClientRelationship` later ends (`status: ended` — the person drops
+the coaching membership), the comp'd `Entitlement` **persists
+permanently** — same rule as a purchased Tier 1/Tier 2 unlock, "you own
+what you were given." What ends with the relationship is everything that's
+actually tied to the relationship itself: `CoachMessage` access and
+community access (below) — not general app access.
 
 ### Coaching community (new, sketched not designed — see `domains/community/README.md`)
 
@@ -93,12 +98,17 @@ practice on top of the AI-coach product. Sketched only — not built:
 `LiveSessionAttendee` — `id, live_session_id, user_id, rsvp_status`
 `ForumThread` / `ForumPost` — `id, author_user_id, thread_id (for posts), title (threads only), body, created_at`
 
-**Open, not yet decided:**
-- **Access gating** — is community access a benefit bundled with being one
-  of the admin's personal `CoachClientRelationship` clients specifically,
-  or a separately purchasable membership anyone (including a self-serve
-  Pro subscriber who's never talked to the admin) could buy? These are
-  different products with different scope.
+**Decided 2026-08-10** (see `logs/decisions.md`): access gating —
+community and direct admin access are bundled with an **active**
+`CoachClientRelationship`, not general app tier. Both community and
+`CoachMessage` check `status: active` specifically; dropping the
+membership (`status: ended`) removes both immediately even though the
+person keeps whatever `Entitlement` they were comped, permanently. This
+also means there's no separately-purchasable community membership for
+self-serve users in v0 — it's exclusively a benefit of being one of the
+admin's personal clients.
+
+**Still open, not yet decided:**
 - **Video hosting and live-call infrastructure are probably not native to
   what Base44 generates** — likely needs a third-party integration (e.g.
   Zoom/Meet for live calls, Vimeo/YouTube-unlisted or Mux for video). Not

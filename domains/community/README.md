@@ -22,13 +22,19 @@ need a human presence or a group, not just an individual adaptive plan:
   just with the AI or the admin. Community-as-retention, not just
   content-as-retention.
 
+## Access (decided 2026-08-10)
+
+Bundled exclusively with an **active** `CoachClientRelationship` — not a
+separately purchasable membership in v0, and not tied to general app tier
+(a Pro subscriber who isn't the admin's personal client doesn't get it).
+Dropping the coaching relationship removes community access immediately,
+even though the person keeps whatever general app access they were
+comped, permanently — deliberate split: general app access is "yours
+because you were given it," community/direct access is "yours because
+you're actively my client."
+
 ## Open questions (real, not defaulted)
 
-- **Who gets access?** Bundled with being one of the admin's personal
-  `CoachClientRelationship` clients, or a separately purchasable
-  membership open to anyone (including self-serve Pro subscribers who've
-  never talked to the admin)? Changes whether this is "part of what
-  coaching clients already get" or a new revenue line.
 - **Video/live-call infrastructure** — probably needs a third-party
   integration (Zoom/Meet, Vimeo/YouTube-unlisted, or similar) rather than
   being native to what Base44 generates. Unconfirmed — see

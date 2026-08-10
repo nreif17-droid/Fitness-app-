@@ -232,3 +232,39 @@ build sequencing; whether comped entitlements survive the coaching
 relationship ending; community access gating; community/live-video
 technical feasibility on Base44; Base44 GitHub sync/export/plan-gating
 verification.
+
+---
+
+### 2026-08-10 — Comped entitlement persistence and community access gating resolved
+
+**Decision 8: comped app access is permanent; relationship-specific access
+is not.** If a `CoachClientRelationship` ends (client drops the coaching
+membership), the comped `Entitlement` from `CoachInviteCode` redemption
+**persists permanently** — same rule as a purchased Tier 1/2 unlock, "you
+own what you were given." What ends immediately with the relationship is
+everything actually tied to it: `CoachMessage` (direct access to the
+admin) and community access — both now explicitly gated on
+`CoachClientRelationship.status: active`, not on general app tier.
+Reasoning: user's explicit call when asked directly.
+
+**This also resolves the community access-gating open question**
+(originally raised in the "personal-client free access" and "coaching
+community" entries above): community is **exclusively** a benefit of an
+active coaching relationship, not a separately purchasable membership —
+so there is no self-serve/Pro path to community access in v0.
+
+Updated: `domains/data/data-model.md` (`CoachMessage`, `CoachInviteCode`
+open-question resolved, "Coaching community" access section),
+`domains/community/README.md` (new "Access" section replacing the old open
+question), `vision/product-vision.md` (Monetization + Coaching services &
+community sections).
+
+**Also reconfirmed (not new):** owner has no Shaolin/combat-sports
+background — consistent with what was said earlier, strengthens rather
+than changes the Hybrid Training wedge recommendation, which is still
+awaiting an explicit yes/no.
+
+Still open: initial wedge modality (recommendation given, awaiting
+confirmation); native vs. web; multi-tenant coaching (not planned); SKU
+build sequencing; community build sequencing and Base44 live-video/hosting
+feasibility; Base44 GitHub sync/export/plan-gating verification.
