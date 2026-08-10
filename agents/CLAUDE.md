@@ -76,8 +76,22 @@ population-level learning infrastructure. Multi-tenant coaching (other
 coaches bringing their own client rosters, not just the owner) is
 explicitly not planned — the admin/coaching layer is single-admin. Don't
 build toward multi-admin, multi-tenant permissions, coach signup/billing,
-or a coach marketplace unless this changes. Monetization/billing and
-native mobile wrappers remain undecided; don't build toward those until
-`logs/decisions.md` shows they've been resolved. Building infrastructure
-for an undecided direction is wasted work and makes the eventual real
-decision harder to make cleanly.
+or a coach marketplace unless this changes. Native mobile wrappers remain
+undecided; don't build toward that until `logs/decisions.md` shows it's
+been resolved.
+
+**Community (`domains/community/README.md`) is explicitly deferred, not
+cut.** The spec (coursework/video, live calls, forum, access gating) is
+decided and written down, but **do not build it, prompt Base44 for it, or
+add its entities to a live schema yet** — the owner wants it held as a
+documented idea until v0's core loop (self-serve programs + tracking +
+adaptation) is live and proven. Surface it again once that milestone is
+reached, rather than waiting to be asked — this is a standing reminder,
+not a one-time flag. When it's revisited, the implementation question is
+still open too: build it in-app (pending Base44's video/live-call
+capability), or run it on a separate platform/tool (e.g. a plain Zoom
+link, a separate community app) instead of building infrastructure for it
+here. Don't assume in-app is the answer.
+
+Building infrastructure for an undecided or deferred direction is wasted
+work and makes the eventual real decision harder to make cleanly.

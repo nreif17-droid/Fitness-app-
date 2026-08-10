@@ -4,6 +4,25 @@ Session-by-session record. Newest entry on top.
 
 ---
 
+### 2026-08-10 — Wedge confirmed; community deferred; opt-in UX confirmed
+Owner confirmed the Hybrid Training wedge recommendation — now decided,
+promoted into its own "Launch wedge" section in `vision/product-vision.md`.
+Community is explicitly deferred (not cut): spec stays documented but
+nothing gets built, prompted to Base44, or added to a live schema until
+the core AI-coach loop is proven — marked "Status: DEFERRED" across
+`domains/community/README.md`, `data-model.md`, and added as a standing
+reminder in `agents/CLAUDE.md` (also cleaned up a stale line there that
+still called monetization undecided). Owner also open to running community
+on a separate platform/tool entirely (Zoom link, separate app) rather than
+building it in-app when it's revisited. Email opt-in UX confirmed as a
+plain toggle, off by default, in `data-model.md`.
+
+**Next:** connect to Base44 and verify sync/export/plan-gating; decide SKU
+build sequencing and native vs. web when it's time to build; revisit
+community once the core loop is live and proven.
+
+---
+
 ### 2026-08-10 — Comped access persistence + community gating resolved
 Two more open questions closed. Comped app access (from a `CoachInviteCode`
 redemption) is permanent even after the coaching relationship ends — matches

@@ -16,7 +16,9 @@ user in outreach — must be an explicit opt-in captured at signup (with
 a visible unsubscribe path once it's in use), not assumed from having an
 email on file. This is a compliance requirement (CAN-SPAM/GDPR-shaped), not
 an implementation nicety — flagging it so it doesn't get skipped under
-deadline pressure.
+deadline pressure. **UX confirmed:** a plain toggle at signup, off by
+default (standard opt-in pattern, not a pre-checked box) — the owner's own
+description, matching what most sites already do.
 
 **AthleteProfile**
 `user_id, age, height, bodyweight_current, training_age_years, sex_for_physiology (distinct from identity fields — used only for load/heart-rate/nutrition physiology, never surfaced as a label), injury_history (free text + structured flags), equipment_access (home/gym/outdoor), primary_modality, secondary_modality`
@@ -87,11 +89,14 @@ what you were given." What ends with the relationship is everything that's
 actually tied to the relationship itself: `CoachMessage` access and
 community access (below) — not general app access.
 
-### Coaching community (new, sketched not designed — see `domains/community/README.md`)
+### Coaching community — DEFERRED, do not build (see `domains/community/README.md`)
 
-**New idea, 2026-08-10** (see `logs/decisions.md`): coursework/video
-content, live 1:1 or group calls, and a forum, for the admin's coaching
-practice on top of the AI-coach product. Sketched only — not built:
+**Decided 2026-08-10** (see `logs/decisions.md`): this section is spec, not
+a build target. Explicitly deferred until the core AI-coach loop is live
+and proven — **don't create these entities in a real schema yet.** Kept
+accurate here for when it's revisited. Coursework/video content, live 1:1
+or group calls, and a forum, for the admin's coaching practice on top of
+the AI-coach product:
 
 `CourseContent` — `id, admin_user_id, title, type (video/article/download), body_or_url, published_at`
 `LiveSession` — `id, admin_user_id, title, format (1:1/group), scheduled_at, meeting_link, capacity (nullable)`

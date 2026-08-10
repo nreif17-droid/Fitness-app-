@@ -99,29 +99,35 @@ and operating system for a real coaching practice:
 - **Lead capture** — every signup (including free-tier self-serve users)
   who opts in (`User.marketing_opt_in`) is a prospect for the owner's real
   coaching membership, not just an app user. See `data-model.md`.
-- **Community** — coursework/video, live 1:1 or group calls, and a forum
-  for paying members. **Decided:** exclusively a benefit of an active
-  `CoachClientRelationship`, not a separately purchasable membership and
-  not tied to Pro tier — ends the moment the coaching relationship does.
-  Sketched, not fully designed — see `domains/community/README.md`.
-  Real open question remaining: whether Base44 natively supports live
-  video/hosting.
+- **Community — DEFERRED, not v0** — coursework/video, live 1:1 or group
+  calls, and a forum for paying members. The spec is decided (exclusively
+  a benefit of an active `CoachClientRelationship`, not separately
+  purchasable, not tied to Pro tier — ends the moment the coaching
+  relationship does), but the owner explicitly wants it held as an idea,
+  not built, until the core AI-coach loop is live and proven. Revisit then
+  — including whether it belongs in-app at all vs. a separate platform/tool
+  (a plain Zoom link, a separate community app). See
+  `domains/community/README.md`.
 - **Human services beyond the AI** — things that need judgment or presence
   the AI can't provide: video form/technique review, event/competition
   prep (several knowledge-base programs already have peaking blocks built
   for this), human-reviewed nutrition, live accountability check-ins.
   Not designed yet, listed here so it isn't lost.
 
+## Launch wedge
+
+**Decided 2026-08-10** (see `logs/decisions.md`): **Hybrid Training**
+(`04-hybrid-training.md`) is the launch wedge — marketed on the owner's
+real credentials (certified personal trainer) and real identity (a
+genuine hybrid athlete), not an audience that doesn't exist yet (~340
+low-interaction Instagram followers, zero clients) or an interest that
+isn't lived expertise (combat sports/Shaolin, explicitly not the owner's
+background). This is about the marketing/onboarding story, not engineering
+scope — the earlier decision that all 13 modalities are accessible at
+launch (no gating) still stands.
+
 ## Not yet decided (flag for a real conversation, not a default)
 
-- **Initial wedge modality — recommended, not yet confirmed:** owner has
-  no meaningful existing audience (~340 low-interaction Instagram
-  followers, zero clients) and confirmed no real combat-sports/Shaolin
-  background (an interest, not lived expertise) — but *is* a certified
-  personal trainer and a genuine hybrid athlete. Recommendation: lead with
-  **Hybrid Training** (`04-hybrid-training.md`) as the launch wedge,
-  marketed on real credential + real identity. Still awaiting an explicit
-  yes/no from the owner before this is logged as decided.
 - Native app vs. web app vs. both
 - Whether the admin/coaching layer ever opens up to other coaches
   (multi-tenant) — not planned for now, flagged in case it comes up

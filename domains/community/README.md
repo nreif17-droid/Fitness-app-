@@ -1,10 +1,22 @@
 # Community Domain (new, 2026-08-10)
 
-Not yet designed in depth — a new idea from the owner, not part of the
-original scaffold. Placeholder scope, see `logs/decisions.md` for how this
-came up and `domains/data/data-model.md` ("Coaching community") for the
-sketched entities (`CourseContent`, `LiveSession`, `LiveSessionAttendee`,
-`ForumThread`/`ForumPost`).
+## Status: DEFERRED — do not build (decided 2026-08-10)
+
+The spec below is decided and worth keeping accurate, but **it is
+explicitly not v0 scope.** Don't implement it, don't prompt Base44 for it,
+don't add its entities to a live schema. The owner wants this held as a
+documented idea until the core AI-coach loop (self-serve programs +
+tracking + adaptation) is live and proven — **surface it again at that
+point** rather than waiting to be asked; this is a standing reminder for
+whoever (human or Claude) picks this repo up next, not a one-time flag.
+See `logs/decisions.md` and `agents/CLAUDE.md` ("Explicitly out of scope
+for now").
+
+Not yet designed in depth beyond the spec below — a new idea from the
+owner, not part of the original scaffold. See
+`domains/data/data-model.md` ("Coaching community") for the sketched
+entities (`CourseContent`, `LiveSession`, `LiveSessionAttendee`,
+`ForumThread`/`ForumPost`) — sketched for reference, not for building yet.
 
 ## The idea
 
@@ -42,7 +54,10 @@ you're actively my client."
 - **Moderation** — a forum needs at least a report/remove path and basic
   community guidelines before it's live with real users, even at small
   scale. Not designed yet.
-- **Sequencing** — this is meaningfully more scope than the core
-  AI-coach product. Worth deciding whether it's v0 or a fast-follow once
-  the core loop (self-serve programs + tracking + adaptation) is proven,
-  rather than building both at once.
+- **Sequencing** — **decided: deferred, not v0** (see Status above). Revisit
+  once the core loop is proven.
+- **Build location** — when this is revisited, don't assume in-app is the
+  answer. The owner explicitly floated running this on a separate platform
+  or tool instead (a plain Zoom link for live calls, a separate community
+  app/product) rather than building community infrastructure into this
+  platform. That's a live option, not a fallback of last resort.

@@ -268,3 +268,40 @@ Still open: initial wedge modality (recommendation given, awaiting
 confirmation); native vs. web; multi-tenant coaching (not planned); SKU
 build sequencing; community build sequencing and Base44 live-video/hosting
 feasibility; Base44 GitHub sync/export/plan-gating verification.
+
+---
+
+### 2026-08-10 — Wedge confirmed; community explicitly deferred; opt-in UX confirmed
+
+**Wedge: confirmed.** Owner said yes to the Hybrid Training recommendation
+— **launch wedge is Hybrid Training** (`04-hybrid-training.md`), marketed
+on the owner's real CPT credential and genuine hybrid-athlete identity.
+Promoted from recommendation to decided; `vision/product-vision.md` now
+has a dedicated "Launch wedge" section instead of a "Not yet decided"
+bullet.
+
+**Decision 9: community is explicitly deferred, not cut.** The full spec
+(coursework/video, live calls, forum, access gating) stays decided and
+documented, but must **not** be built, prompted to Base44, or added to a
+live schema yet. Hold it as an idea until the core AI-coach loop (self-
+serve programs + tracking + adaptation) is live and proven, then surface
+it again proactively — a standing reminder for whoever works this repo
+next, not a one-time flag. Owner is also open to *not* building it in-app
+at all when the time comes — a plain Zoom link or a separate community
+platform/app are live alternatives to building infrastructure here, not
+fallbacks of last resort. Reasoning: user's explicit call.
+Updated: `agents/CLAUDE.md` ("Explicitly out of scope for now" — standing
+reminder, also cleaned up a stale line that still said monetization was
+undecided), `domains/community/README.md` (new "Status: DEFERRED" header),
+`domains/data/data-model.md` (community section marked deferred, not a
+build target), `vision/product-vision.md` (community bullet marked
+deferred).
+
+**Confirmed, not new:** email opt-in UX is a plain toggle at signup, off
+by default — matches what was already modeled for `marketing_opt_in`,
+just made explicit in `data-model.md`.
+
+Still open: native vs. web; multi-tenant coaching (not planned); SKU build
+sequencing; community build sequencing and Base44 live-video/hosting
+feasibility (both dormant until community is revisited); Base44 GitHub
+sync/export/plan-gating verification.
