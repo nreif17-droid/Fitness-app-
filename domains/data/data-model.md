@@ -12,6 +12,28 @@ with once real screens get built in Base44. Every entity below assumes a
 **AthleteProfile**
 `user_id, age, height, bodyweight_current, training_age_years, sex_for_physiology (distinct from identity fields — used only for load/heart-rate/nutrition physiology, never surfaced as a label), injury_history (free text + structured flags), equipment_access (home/gym/outdoor), primary_modality, secondary_modality`
 
+## Coaching relationship (admin layer)
+
+**Decided 2026-08-10** (see `logs/decisions.md`): v0 is primarily self-serve
+B2C — most `User` rows have no coach and are run entirely by the AI. On top
+of that, the platform owner also runs their own coaching practice through
+this same system. This is modeled as a relationship on specific users, not
+a fork of the schema:
+
+`User.role` — `member` (default) or `admin`. Single admin (the owner) for
+v0, not a multi-tenant coach roster — see open questions below.
+
+**CoachClientRelationship**
+`id, admin_user_id, client_user_id, status (active/paused/ended), started_at, notes`
+
+A row here is what turns a normal self-serve `User` into one of the owner's
+directly-coached clients: it grants the admin read access to that client's
+`ProgramInstance`, `Session`/`SessionLog`, `ReadinessCheckIn`, and
+`CoachDecisionLog`, and write/override access to adjust their program. No
+row = pure self-serve, AI-only, admin has no special access. Everything
+else in this schema (programs, logs, coach memory) is identical either way
+— this table is the only thing that distinguishes the two modes.
+
 ## Goals
 
 **Goal**
@@ -83,12 +105,15 @@ for auditability and for the user to see "why did my program change"
 
 ## Open questions this schema doesn't resolve yet
 
-- **New, from the coach-facing decision:** this schema still assumes `User`
-  is the athlete. A coach-facing v0 needs a `Coach` entity and some kind of
-  `CoachClientRelationship` (coach_id, client_user_id, status) so a coach can
-  see/manage multiple `AthleteProfile`s, and permissions on who can read/
-  write a given client's data. Not modeled yet — flagging rather than
-  guessing at the shape before the coach-facing UX is sketched.
+- Whether the admin/coaching layer ever needs to support more than one
+  admin (other coaches bringing their own client rosters, i.e. true
+  multi-tenancy) — not planned for v0 (`CoachClientRelationship.admin_user_id`
+  is written generically enough to extend later, but nothing above assumes
+  more than one admin exists).
+- Exact permission boundary for the admin on a coached client: full
+  read/write override on everything, or read-only visibility with the AI
+  still making changes unless the admin explicitly intervenes? Affects how
+  `CoachDecisionLog` attributes a change (AI vs. admin) — not designed yet.
 - Whether ProgramInstance supports true hybrid/custom programs the coach
   assembles dynamically, vs. only ever assigning one of the fixed templates.
   The knowledge base is written as fixed 12-week templates; a coach that

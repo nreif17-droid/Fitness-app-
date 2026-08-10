@@ -71,10 +71,14 @@ as grounding context, not rely on the model's general training.
   the vision doc~~ — **decided 2026-08-10: per-user memory only, no
   population-level layer.** Out of scope permanently unless revisited, not
   just deferred (see `logs/decisions.md`).
-- **New, from the coach-facing decision:** orchestration above assumed a
-  single end-user driving their own intake/adaptation loop. A coach-facing
-  v0 needs to decide who the AI is actually talking to at each of the three
-  jobs above — does intake happen coach-to-AI on the client's behalf, AI-to-
-  client directly with the coach reviewing output, or both depending on the
-  step? This changes the intake conversation design non-trivially and isn't
-  designed yet.
+- **Corrected 2026-08-10** (see `logs/decisions.md`): the three jobs above
+  are written correctly for the *primary* case — the AI talks directly to
+  the end user (self-serve, no human coach in the loop) for the large
+  majority of users. What's not yet designed is the **admin-coached path**:
+  for users with a `CoachClientRelationship` to the owner, does the admin
+  see/approve AI output before the client does, does the client still get
+  the same AI-direct experience with the admin able to intervene
+  asynchronously, or does it vary by job (e.g. AI-direct for daily
+  adaptation, admin-reviewed for the initial program and re-goal points)?
+  Small in scope — it's a visibility/approval variant on the existing three
+  jobs, not a new job — but not designed yet.

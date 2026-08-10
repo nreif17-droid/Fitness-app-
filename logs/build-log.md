@@ -4,6 +4,25 @@ Session-by-session record. Newest entry on top.
 
 ---
 
+### 2026-08-10 — Corrected target-user decision: B2C self-serve + owner's coaching layer
+The "coach-facing tool" decision from earlier this session was wrong — user
+corrected it directly. Actual shape: primary product is public, self-serve
+B2C (anyone signs up, AI coaches them with no human in the loop); the owner
+additionally runs their own coaching clients through the same system as
+admin, with visibility/override on that specific relationship. Not a
+multi-coach marketplace. Updated `vision/product-vision.md`,
+`domains/data/data-model.md` (added `User.role` and
+`CoachClientRelationship`), `domains/ai-coach/orchestration.md`
+(admin-coached path flagged as not-yet-designed, small in scope), and
+`agents/CLAUDE.md`. Full reasoning in `logs/decisions.md`.
+
+**Next:** design the admin-coached path in orchestration (does the admin
+review/approve, or just get visibility with override); connect to Base44;
+resolve remaining open questions (launch wedge modality, monetization,
+native vs. web).
+
+---
+
 ### 2026-08-10 — Landed scaffold to GitHub + first two decisions resolved
 Pushed the scaffold as the initial commit to `nreif17-droid/Fitness-app-`
 (branch `claude/task-clarification-nzd30y`), then a `main` branch and PR.

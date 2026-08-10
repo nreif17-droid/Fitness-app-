@@ -72,8 +72,12 @@ guessing silently and building the wrong thing.
 
 Cross-user "collective consciousness" learning is now decided (see
 `logs/decisions.md`, 2026-08-10): **per-user memory only** — don't build
-population-level learning infrastructure. Monetization/billing and native
-mobile wrappers remain undecided; don't build toward those until
+population-level learning infrastructure. Multi-tenant coaching (other
+coaches bringing their own client rosters, not just the owner) is
+explicitly not planned — the admin/coaching layer is single-admin. Don't
+build toward multi-admin, multi-tenant permissions, coach signup/billing,
+or a coach marketplace unless this changes. Monetization/billing and
+native mobile wrappers remain undecided; don't build toward those until
 `logs/decisions.md` shows they've been resolved. Building infrastructure
 for an undecided direction is wasted work and makes the eventual real
 decision harder to make cleanly.

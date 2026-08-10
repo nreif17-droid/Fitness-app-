@@ -44,19 +44,33 @@ running a fixed template regardless of what's actually happening.
 
 ## Who it's for
 
-**Decided 2026-08-10 (see `logs/decisions.md`): a coach-facing tool.** v0 is
-built for a coaching practice (e.g. the Sedona coaching concept) to run
-multiple clients through, not a direct-to-consumer self-serve app. This
-means the primary user of the onboarding flow, the dashboards, and the
-"why did the program change" visibility is the coach acting on a client's
-behalf (or the coach reviewing/approving what the AI proposed for a
-client), not an anonymous general-population signup. Revisit whether a
-B2C self-serve layer gets added on top once the coach-facing tool is
-proven — it isn't ruled out, just not v0.
+**Decided 2026-08-10, corrected same day (see `logs/decisions.md` — the
+first pass at this got it backwards):** v0 is **both**, on one system, not
+two products:
+
+- **Primary: a public, self-serve B2C app.** Anyone signs up, including
+  someone with zero training background, picks (or is matched to) a program
+  from the modality library, and is guided through it autonomously — the
+  app tells them what to do each session, they log results, the AI coach
+  adapts the plan. No human coach is in this loop; the AI *is* the coach.
+- **Secondary: an admin/coaching layer for the owner.** The platform owner
+  also runs their own real-world coaching practice through the same system
+  — an admin role with visibility into and override capability over a
+  roster of their own directly-coached clients, layered on top of the same
+  program-generation/adaptation engine everyone else uses. Not a
+  multi-coach marketplace (other coaches bringing their own client rosters)
+  — that's a materially bigger multi-tenancy question, explicitly out of
+  scope until raised on purpose.
+
+The two modes share the same knowledge base, data model, and AI
+orchestration; the difference is a permissions/visibility layer on specific
+client relationships, not a fork of the product.
 
 ## Not yet decided (flag for a real conversation, not a default)
 
-- Initial wedge modality to launch with (which of the 13 in the knowledge
-  base the coaching practice actually runs first)
-- Monetization model
+- Initial wedge modality to launch with
+- Monetization model (and whether it differs between self-serve users and
+  the owner's directly-coached clients)
 - Native app vs. web app vs. both
+- Whether the admin/coaching layer ever opens up to other coaches
+  (multi-tenant) — not planned for now, flagged in case it comes up
