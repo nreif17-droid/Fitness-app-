@@ -161,3 +161,35 @@ Still open: initial wedge modality; native vs. web; multi-tenant coaching
 (not planned); tier expiry semantics and SKU build sequencing; whether a
 comped entitlement survives the coaching relationship ending; Base44
 GitHub sync/export/plan-gating verification.
+
+---
+
+### 2026-08-10 — Tier expiry resolved; wedge context gathered (still open)
+
+**Decision 6: Tier 1 ($18) and Tier 2 ($45) per-modality unlocks never
+expire.** Buy once, own that modality's unlocked depth on that account
+permanently — including Tier 2's ongoing post-Wk-12 adaptation. **Pro
+($200/yr) is the only tier that expires**, annually, per its own pricing
+(this was already implied by "/yr" and is now explicit). This resolves the
+`Entitlement.expires_at` open question for purchased tiers.
+Reasoning: user's explicit call when asked directly.
+Updated: `domains/data/data-model.md` (Monetization table + Entitlement
+section), `vision/product-vision.md` (Monetization section).
+Still genuinely open: whether a *comped* entitlement (from `CoachInviteCode`
+redemption) behaves like permanent Tier 1/2 or like expiring Pro if the
+underlying `CoachClientRelationship` ends — not the same question, not
+resolved by this decision.
+
+**Wedge context, not yet a decision:** owner currently has no meaningful
+audience to leverage — ~340 Instagram followers from "back home" with low
+interaction, zero coaching clients. This rules out an audience-arbitrage
+wedge (there's no existing audience in any modality to point at) and means
+the free-tier-as-market-test option, or a wedge grounded in the owner's own
+personal training background/expertise, are the live paths. Personal
+background (e.g. the "Shaolin discipleship track" referenced in the
+knowledge base) not yet confirmed by the owner — question still open.
+
+Still open: initial wedge modality; native vs. web; multi-tenant coaching
+(not planned); SKU build sequencing; whether comped entitlements survive
+the coaching relationship ending; Base44 GitHub sync/export/plan-gating
+verification.

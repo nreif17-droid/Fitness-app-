@@ -72,10 +72,13 @@ client relationships, not a fork of the product.
 unlocks mapped onto the existing 12-week block structure — Free (Wks 1–4),
 Tier 1 $18 (Wks 1–8), Tier 2 $45 (full 12 wks + ongoing adaptation), Pro
 $200/yr (Tier 2 on every modality). Full logging (nutrition/sleep/weight)
-is free regardless of tier — only program depth is paywalled. See
+is free regardless of tier — only program depth is paywalled. **Tier
+1/Tier 2 purchases are owned forever, no expiry** — buy the $45 unlock
+once, that modality is yours permanently on that account. **Pro is the
+only tier that expires** — annual, lapses without renewal. See
 `domains/data/data-model.md` ("Monetization / entitlements") for the
-schema. Two implementation details still open: whether paid tiers expire,
-and whether v0 builds all 26 modality×tier SKUs at once or starts smaller.
+schema. Still open: whether v0 builds all 26 modality×tier SKUs at once or
+starts smaller.
 
 **The one exception: the owner's own personal clients get the entire app
 free, no gates at all** — they've already paid the owner directly, offline,
@@ -84,9 +87,14 @@ instead of paying in-app. See `CoachInviteCode` in `data-model.md`.
 
 ## Not yet decided (flag for a real conversation, not a default)
 
-- Initial wedge modality to launch with — actively being worked through
-  with the owner's own background/audience as an input, not yet landed
+- Initial wedge modality to launch with — actively being worked through.
+  No meaningful existing audience to leverage (owner currently has ~340
+  low-interaction Instagram followers and zero clients), so this is a
+  from-zero launch, not an audience-arbitrage play — the wedge needs to
+  come from somewhere else (personal expertise/authenticity, or just
+  proving out via the free tier and following the retention data)
 - Native app vs. web app vs. both
 - Whether the admin/coaching layer ever opens up to other coaches
   (multi-tenant) — not planned for now, flagged in case it comes up
-- Tier expiry semantics and SKU build sequencing (see Monetization above)
+- SKU build sequencing (all 26 modality×tier combos at once, or fewer to
+  start) — tier expiry is resolved, this is just build order

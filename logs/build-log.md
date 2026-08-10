@@ -4,6 +4,22 @@ Session-by-session record. Newest entry on top.
 
 ---
 
+### 2026-08-10 — Tier expiry resolved; wedge still open, audience context gathered
+Tier 1 ($18) / Tier 2 ($45) per-modality unlocks are permanent, no expiry —
+buy once, own it forever on that account. Pro ($200/yr) is the only tier
+that expires, annually. Updated `data-model.md` and `vision/product-vision.md`.
+On the wedge: owner has ~340 low-interaction Instagram followers and zero
+clients currently, so there's no existing audience to leverage in any
+particular modality — noted in the vision doc as context, not yet a
+decision. Still need to ask about the owner's own personal training
+background directly (the knowledge base's "Shaolin discipleship track"
+reference is an open thread, not confirmed).
+
+**Next:** land the wedge; decide SKU build sequencing; decide whether
+comped entitlements survive relationship end; connect to Base44.
+
+---
+
 ### 2026-08-10 — Personal-client free access via invite code
 Added the last piece of the monetization picture: the owner's own
 (offline-paid) coaching clients get the whole app free, no gates, via a

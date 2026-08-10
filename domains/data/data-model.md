@@ -98,12 +98,12 @@ knowledge base already uses (`00-framework.md` — Accumulate Wks 1–4,
 Intensify Wks 5–8, Realize/Taper Wks 9–12). This is a system-wide rule off
 Part 0, not a per-template field:
 
-| Tier | Price | Unlocks | Depth |
-|---|---|---|---|
-| Free | — | Weeks 1–4 of any modality | Basic — gets someone started |
-| Tier 1 | $18 / modality | Weeks 1–8 | More refined, more escalating |
-| Tier 2 | $45 / modality | Full 12 weeks + ongoing adaptation | Fully tailored, continues past Wk 12 |
-| Pro | $200 / yr | Tier 2 depth on **all** modalities | Everything |
+| Tier | Price | Unlocks | Depth | Expires? |
+|---|---|---|---|---|
+| Free | — | Weeks 1–4 of any modality | Basic — gets someone started | n/a |
+| Tier 1 | $18 / modality | Weeks 1–8 | More refined, more escalating | **No — owned forever** |
+| Tier 2 | $45 / modality | Full 12 weeks + ongoing adaptation | Fully tailored, continues past Wk 12 | **No — owned forever** |
+| Pro | $200 / yr | Tier 2 depth on **all** modalities | Everything | **Yes — annual, lapses without renewal** |
 
 Free-tier tracking (nutrition/sleep/weight logging) is **not** gated —
 every user gets full logging regardless of tier; only program depth is
@@ -117,13 +117,21 @@ default (no row required). `ProgramInstance`/`Session` generation checks
 the relevant `Entitlement.tier` to decide how many weeks to reveal and
 whether adaptation continues past Week 12.
 
+**Decided 2026-08-10** (see `logs/decisions.md`): `expires_at` is null for
+`tier_1`/`tier_2` — a per-modality unlock, once purchased, is owned
+permanently on that account, including Tier 2's ongoing post-Wk-12
+adaptation. `expires_at` is only ever populated for `pro` (annual, lapses
+without renewal back down to whatever per-modality entitlements the user
+separately owns).
+
 **Open, not yet decided (see `logs/decisions.md`):**
-- Does Tier 1/Tier 2 access expire, or is it owned permanently once
-  purchased (including ongoing post-Wk-12 adaptation on Tier 2)? This is
-  what `expires_at` is for, but whether it's ever populated is undecided.
 - Whether v0 actually builds all 13 modalities × Tier 1/Tier 2 (26 SKUs)
   plus Pro, or starts with less granularity and expands — the tier
   *concept* is decided, this is about build sequencing.
+- Whether a comped `Entitlement` from `CoachInviteCode` redemption behaves
+  like the permanent per-modality tiers (survives a `CoachClientRelationship`
+  ending) or like Pro (tied to active status) — still unresolved, flagged
+  above under `CoachInviteCode`.
 
 **Session** (planned) — one prescribed workout, generated from a
 ProgramInstance for a specific date
