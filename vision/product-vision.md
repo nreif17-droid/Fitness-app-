@@ -44,21 +44,19 @@ running a fixed template regardless of what's actually happening.
 
 ## Who it's for
 
-Not yet narrowed — worth deciding deliberately rather than defaulting to
-"everyone," since the coaching intelligence, onboarding flow, and even which
-modalities get built first all depend on it. Candidates to weigh: general
-population wanting one serious all-in-one tracker; intermediate/advanced
-athletes in a specific modality who've outgrown generic apps; coaches
-(including a private practice like the Sedona coaching concept) who want to
-run multiple clients through this instead of spreadsheets.
+**Decided 2026-08-10 (see `logs/decisions.md`): a coach-facing tool.** v0 is
+built for a coaching practice (e.g. the Sedona coaching concept) to run
+multiple clients through, not a direct-to-consumer self-serve app. This
+means the primary user of the onboarding flow, the dashboards, and the
+"why did the program change" visibility is the coach acting on a client's
+behalf (or the coach reviewing/approving what the AI proposed for a
+client), not an anonymous general-population signup. Revisit whether a
+B2C self-serve layer gets added on top once the coach-facing tool is
+proven — it isn't ruled out, just not v0.
 
 ## Not yet decided (flag for a real conversation, not a default)
 
-- Target user / initial wedge modality to launch with
-- Whether this is B2C, or a tool a coach (e.g. for a coaching practice) runs
-  clients through, or both
+- Initial wedge modality to launch with (which of the 13 in the knowledge
+  base the coaching practice actually runs first)
 - Monetization model
-- How much of the "collective consciousness" framing is literal (does the
-  coach learn across all users, or is it per-user memory only — this has
-  real privacy and architecture implications and shouldn't be assumed)
 - Native app vs. web app vs. both

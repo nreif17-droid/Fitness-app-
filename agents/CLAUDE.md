@@ -70,8 +70,10 @@ guessing silently and building the wrong thing.
 
 ## Explicitly out of scope for now
 
-Don't build toward these until `logs/decisions.md` shows they've been
-decided: cross-user "collective consciousness" learning (data model
-question flagged in `data-model.md`), monetization/billing, native mobile
-wrappers. Building infrastructure for an undecided direction is wasted
-work and makes the eventual real decision harder to make cleanly.
+Cross-user "collective consciousness" learning is now decided (see
+`logs/decisions.md`, 2026-08-10): **per-user memory only** — don't build
+population-level learning infrastructure. Monetization/billing and native
+mobile wrappers remain undecided; don't build toward those until
+`logs/decisions.md` shows they've been resolved. Building infrastructure
+for an undecided direction is wasted work and makes the eventual real
+decision harder to make cleanly.

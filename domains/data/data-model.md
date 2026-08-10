@@ -72,8 +72,9 @@ knowledge base's testing protocol live here.
 ## AI coach memory
 
 **CoachMemory** — durable facts the coach has learned about this specific
-user, distinct from raw logs (this is the per-user equivalent of the memory
-file convention already in use elsewhere)
+user, **strictly per-user, no population-level layer** (decided
+2026-08-10, see `logs/decisions.md` — this is the per-user equivalent of
+the memory file convention already in use elsewhere)
 `id, user_id, category (constraint/preference/pattern/injury-flag), content, source_session_id, confidence, superseded_by (nullable)`
 
 **CoachDecisionLog** — every material adjustment the coach made and why,
@@ -82,11 +83,12 @@ for auditability and for the user to see "why did my program change"
 
 ## Open questions this schema doesn't resolve yet
 
-- Whether `CoachMemory` is strictly per-user or whether there's a
-  population-level layer (patterns learned across users, anonymized) — this
-  is the literal architecture decision behind the "collective consciousness"
-  framing in the vision doc, and it has real privacy/consent implications
-  that need a real decision, not a default.
+- **New, from the coach-facing decision:** this schema still assumes `User`
+  is the athlete. A coach-facing v0 needs a `Coach` entity and some kind of
+  `CoachClientRelationship` (coach_id, client_user_id, status) so a coach can
+  see/manage multiple `AthleteProfile`s, and permissions on who can read/
+  write a given client's data. Not modeled yet — flagging rather than
+  guessing at the shape before the coach-facing UX is sketched.
 - Whether ProgramInstance supports true hybrid/custom programs the coach
   assembles dynamically, vs. only ever assigning one of the fixed templates.
   The knowledge base is written as fixed 12-week templates; a coach that

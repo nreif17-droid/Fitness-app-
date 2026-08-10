@@ -67,6 +67,14 @@ as grounding context, not rely on the model's general training.
   agent/superagent features, or via an external call this repo's backend
   code makes. This is a platform-capability question to resolve against
   current Base44 docs, not assume.
-- The "collective consciousness" cross-user learning layer referenced in the
-  vision doc — deliberately out of scope for orchestration v0 until the
-  data model question in `data-model.md` is resolved.
+- ~~The "collective consciousness" cross-user learning layer referenced in
+  the vision doc~~ — **decided 2026-08-10: per-user memory only, no
+  population-level layer.** Out of scope permanently unless revisited, not
+  just deferred (see `logs/decisions.md`).
+- **New, from the coach-facing decision:** orchestration above assumed a
+  single end-user driving their own intake/adaptation loop. A coach-facing
+  v0 needs to decide who the AI is actually talking to at each of the three
+  jobs above — does intake happen coach-to-AI on the client's behalf, AI-to-
+  client directly with the coach reviewing output, or both depending on the
+  step? This changes the intake conversation design non-trivially and isn't
+  designed yet.
