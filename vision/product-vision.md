@@ -77,6 +77,11 @@ is free regardless of tier — only program depth is paywalled. See
 schema. Two implementation details still open: whether paid tiers expire,
 and whether v0 builds all 26 modality×tier SKUs at once or starts smaller.
 
+**The one exception: the owner's own personal clients get the entire app
+free, no gates at all** — they've already paid the owner directly, offline,
+for coaching. They redeem a personal code from the owner during onboarding
+instead of paying in-app. See `CoachInviteCode` in `data-model.md`.
+
 ## Not yet decided (flag for a real conversation, not a default)
 
 - Initial wedge modality to launch with — actively being worked through

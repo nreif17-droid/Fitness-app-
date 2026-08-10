@@ -4,6 +4,21 @@ Session-by-session record. Newest entry on top.
 
 ---
 
+### 2026-08-10 — Personal-client free access via invite code
+Added the last piece of the monetization picture: the owner's own
+(offline-paid) coaching clients get the whole app free, no gates, via a
+redeemable `CoachInviteCode` at onboarding that both creates the
+`CoachClientRelationship` and grants a comped Pro-tier `Entitlement` in one
+step. Updated `data-model.md`, `vision/product-vision.md`,
+`orchestration.md`. New open question surfaced: does the comp survive the
+coaching relationship ending. Reasoning in `logs/decisions.md`.
+
+**Next:** land the launch-wedge-modality conversation; decide tier expiry
+semantics, SKU build sequencing, and whether comp survives relationship end;
+connect to Base44.
+
+---
+
 ### 2026-08-10 — Monetization tiers + admin-oversight boundary decided
 Two more decisions resolved with the user. Monetization: tiered per-modality
 unlocks (Free = Wks 1–4, $18 Tier 1 = Wks 1–8, $45 Tier 2 = full 12 wks +

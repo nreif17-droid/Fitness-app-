@@ -48,6 +48,31 @@ A simple in-app thread between a coached client and the admin, available
 alongside (not instead of) full AI access. Only exists where a
 `CoachClientRelationship` exists — self-serve users have no one to message.
 
+**Decided 2026-08-10** (see `logs/decisions.md`): personal clients — people
+who paid the admin directly, offline, for coaching — get **the entire app
+free**, no tier gates at all. They redeem a code during onboarding rather
+than the admin manually flipping a flag per user:
+
+**CoachInviteCode**
+`id, admin_user_id, code (unique string), max_redemptions (default 1), redemption_count, status (active/revoked), created_at, notes`
+
+**CoachInviteCodeRedemption**
+`id, invite_code_id, redeemed_by_user_id, redeemed_at`
+
+Entering a valid code during onboarding does two things atomically: (1)
+creates a `CoachClientRelationship(admin_user_id, client_user_id, status:
+active)`, and (2) grants an `Entitlement(user_id, modality: null, tier:
+pro, price_paid_cents: 0, source: admin_grant)` — full Pro-equivalent
+access, every modality, no purchase. `max_redemptions` defaults to 1 (one
+code per client) so a leaked code can't be reused broadly; the admin can
+raise it deliberately for a code meant to be shared.
+
+**Open, not yet decided:** if a `CoachClientRelationship` later ends
+(`status: ended` — the person stops being a coaching client), does the
+comp'd `Entitlement` from decision get revoked, or does it persist
+permanently since "they already paid"? Worth a real answer before this
+matters in practice, not a default.
+
 ## Goals
 
 **Goal**

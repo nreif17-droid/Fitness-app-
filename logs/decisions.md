@@ -132,3 +132,32 @@ Still open: initial wedge modality (actively being explored — the owner's
 own background/audience is a live input, not yet landed); native vs. web;
 multi-tenant coaching (not planned); tier expiry semantics and SKU build
 sequencing; Base44 GitHub sync/export/plan-gating verification.
+
+---
+
+### 2026-08-10 — Personal clients get full free access via invite code
+
+**Decision 5:** anyone who becomes the owner's personal (offline-paid)
+coaching client gets the **entire app free — every modality, every tier,
+no gates** — because they already paid the owner directly for coaching.
+They redeem a code from the owner during onboarding rather than the admin
+manually granting access per user.
+Reasoning: user's explicit design, volunteered unprompted — the initial
+"40% off with a code" idea was revised mid-message to "free, full access,
+no gates" and that's the version implemented.
+Updated: `domains/data/data-model.md` (new `CoachInviteCode` and
+`CoachInviteCodeRedemption` entities — redemption creates a
+`CoachClientRelationship` and grants a comped `Entitlement` in one step),
+`vision/product-vision.md` (Monetization section, the free-for-personal-
+clients exception), `domains/ai-coach/orchestration.md` (code redemption
+placed at the front of the intake job).
+
+**New open question this raises, not resolved:** if a `CoachClientRelationship`
+later ends, does the comped `Entitlement` get revoked or persist
+permanently ("they already paid")? Flagged in `data-model.md`, needs a
+real answer before it matters in practice.
+
+Still open: initial wedge modality; native vs. web; multi-tenant coaching
+(not planned); tier expiry semantics and SKU build sequencing; whether a
+comped entitlement survives the coaching relationship ending; Base44
+GitHub sync/export/plan-gating verification.

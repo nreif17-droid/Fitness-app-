@@ -25,6 +25,10 @@ as grounding context, not rely on the model's general training.
 1. **Intake / goal clarification** — conversational, figures out what the
    person actually wants and what's true about their current state and
    constraints. Output: a filled-out AthleteProfile and one or more Goals.
+   Also where a `CoachInviteCode` gets redeemed if the person has one
+   (personal client onboarding — see `data-model.md`) — that check belongs
+   at the front of intake, before program selection, since it changes what
+   the person is entitled to see.
 2. **Program selection & generation** — given a profile and goals, choose a
    ProgramTemplate (or combination — see the legal-pairings table in
    `16-integration-guide.md`) and instantiate it as sessions. This can mostly
