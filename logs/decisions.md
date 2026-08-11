@@ -371,3 +371,56 @@ if any; how readiness is presented (composite score vs. components); what the co
 does when it detects disengagement; whether adherence data feeds the owner's outreach
 funnel (tone risk); supplement recommendations vs. future affiliate revenue (conflict
 of interest).
+
+---
+
+### 2026-08-10 — Community deferral REVERSED; fix 01 specified
+
+**Decision 10: community is back in scope.** Supersedes the 2026-08-10
+deferral decision. The owner asked to proceed with community features, get
+them hooked up, and make sure they operate properly.
+Reasoning: owner's explicit call, reversing their own earlier deferral.
+Updated: `domains/community/README.md` (Status: ACTIVE), `agents/CLAUDE.md`,
+`vision/product-vision.md`, `domains/data/data-model.md`.
+
+**Critical context the reversal surfaced — what's built is not what was
+specced.** The live app assessment found community features already exist,
+but they are a *different product* from the spec:
+- **Built:** consumer social network — `SocialPost`, `Friendship`,
+  `PostLike`, `social-feed`/`social-friends`/`social-leaderboard`
+  functions, `Community.jsx`. **Open to all users**; `SocialPost` supports
+  `visibility: public`.
+- **Specced:** coaching community — `CourseContent`, `LiveSession`,
+  `LiveSessionAttendee`, `ForumThread`/`ForumPost`. **Gated to active
+  `CoachClientRelationship` only.** None of it built.
+
+**This makes the access model contested rather than decided.** Three
+options are laid out in `domains/community/README.md`; recommendation is
+option A (run the open social layer and a gated coaching community as two
+distinct things, since gating the social layer would strip retention value
+from exactly the free-tier users the funnel depends on). **Not decided —
+needs the owner's call.**
+
+**Newly urgent, not theoretical:** moderation. Public user-generated
+content is already possible in the built app, with no report path, no
+admin remove capability, and no community guidelines observed. That is a
+prerequisite before real users, not a nicety.
+
+**Fix 01 (entitlement bypass) specified but NOT applied.** Full patch,
+rationale, and a six-case verification plan written to
+`logs/fixes/01-entitlement-bypass.md`. It adds a server-side entitlement
+gate to `generate-program` using only existing schema fields (fails closed
+on `is_premium`, admin/Pro/owner bypass), plus secondary RLS hardening
+options for `WorkoutProgram`. **Blocked on Base44 MCP re-authentication** —
+the OAuth flow cannot be completed from a non-interactive cloud session.
+
+**Nutrition scope of practice:** explained to the owner in plain terms; they
+acknowledged and waved it off as non-blocking. Recorded as such — it is
+**not** resolved, and remains a live exposure since the app already ships
+calorie/macro targets with no health screening. Revisit before taking money
+from real users.
+
+Still open: community access model (contested); moderation design; native
+vs. web; multi-tenant coaching (not planned); SKU build sequencing; the
+nutrition scope-of-practice posture; Base44 GitHub sync/export/plan-gating
+verification.

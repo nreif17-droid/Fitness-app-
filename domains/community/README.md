@@ -1,22 +1,30 @@
 # Community Domain (new, 2026-08-10)
 
-## Status: DEFERRED — do not build (decided 2026-08-10)
+## Status: ACTIVE — in scope (reversed 2026-08-10)
 
-The spec below is decided and worth keeping accurate, but **it is
-explicitly not v0 scope.** Don't implement it, don't prompt Base44 for it,
-don't add its entities to a live schema. The owner wants this held as a
-documented idea until the core AI-coach loop (self-serve programs +
-tracking + adaptation) is live and proven — **surface it again at that
-point** rather than waiting to be asked; this is a standing reminder for
-whoever (human or Claude) picks this repo up next, not a one-time flag.
-See `logs/decisions.md` and `agents/CLAUDE.md` ("Explicitly out of scope
-for now").
+**The earlier deferral is reversed.** The owner has asked to proceed with
+community, get it hooked up, and make sure it operates properly. Build it.
 
-Not yet designed in depth beyond the spec below — a new idea from the
-owner, not part of the original scaffold. See
-`domains/data/data-model.md` ("Coaching community") for the sketched
-entities (`CourseContent`, `LiveSession`, `LiveSessionAttendee`,
-`ForumThread`/`ForumPost`) — sketched for reference, not for building yet.
+### ⚠️ Read this first: what's built ≠ what's specced
+
+Assessment of the live app (`logs/apex-vitality-assessment.md`) found that
+**community features already exist in Apex Vitality** — but they are a
+*different product* from the spec below:
+
+| | **Built in Apex Vitality** | **Specced in this doc** |
+|---|---|---|
+| Shape | Consumer **social network** | **Coaching community** |
+| Entities | `SocialPost`, `Friendship`, `PostLike` | `CourseContent`, `LiveSession`, `LiveSessionAttendee`, `ForumThread`/`ForumPost` |
+| Functions | `social-feed`, `social-friends`, `social-leaderboard` | none built |
+| UI | `Community.jsx` (15 KB) | none built |
+| Who gets in | **Any user.** `SocialPost.visibility` supports `public`; friendships are user-to-user | **Only active `CoachClientRelationship`** clients |
+| Purpose | Peer motivation, sharing workouts, leaderboards | Deliver the owner's coaching — courses, live calls, forum |
+
+**These are not the same feature and they don't gate the same way.** The
+built version is open to everyone; the specced version is a paid-client
+benefit. Both are legitimate; they answer different questions.
+
+**This needs a decision before building further** — see "Access model" below.
 
 ## The idea
 
@@ -34,30 +42,43 @@ need a human presence or a group, not just an individual adaptive plan:
   just with the AI or the admin. Community-as-retention, not just
   content-as-retention.
 
-## Access (decided 2026-08-10)
+## Access model — NEEDS A DECISION
 
-Bundled exclusively with an **active** `CoachClientRelationship` — not a
-separately purchasable membership in v0, and not tied to general app tier
-(a Pro subscriber who isn't the admin's personal client doesn't get it).
-Dropping the coaching relationship removes community access immediately,
-even though the person keeps whatever general app access they were
-comped, permanently — deliberate split: general app access is "yours
-because you were given it," community/direct access is "yours because
-you're actively my client."
+The earlier decision (2026-08-10) was: community bundled **exclusively** with an
+active `CoachClientRelationship` — not separately purchasable, not tied to app
+tier. Drop the coaching relationship, lose community access, but keep comped app
+access permanently.
+
+**That decision conflicts with what's actually built.** The live app's social
+features are open to all users. So one of these has to give:
+
+| Option | Meaning | Implication |
+|---|---|---|
+| **A. Two distinct tiers** | Keep the built social feed open to everyone (peer motivation, leaderboards); add the specced coaching community as a *separate, gated* space for active clients | Most work, but both features do what they're each good at. Social drives retention for free users; coaching community delivers paid value |
+| **B. Gate everything to clients** | Restrict the existing social features to active `CoachClientRelationship` only | Matches the original decision, but throws away retention value for the ~all of users who aren't the owner's personal clients — and social proof is what makes a young app feel alive |
+| **C. Open everything** | Drop the gating entirely; community is a general feature for all users | Simplest; means community stops being a coaching-client benefit, which was its original point |
+
+**Recommendation: A.** They serve genuinely different purposes, and the built
+social layer is real retention machinery for exactly the free-tier users the
+funnel depends on. Gating it would make a new app feel empty.
+
+**Not decided — needs the owner's call.**
 
 ## Open questions (real, not defaulted)
 
 - **Video/live-call infrastructure** — probably needs a third-party
   integration (Zoom/Meet, Vimeo/YouTube-unlisted, or similar) rather than
   being native to what Base44 generates. Unconfirmed — see
-  `domains/platform/base44-architecture.md`.
-- **Moderation** — a forum needs at least a report/remove path and basic
-  community guidelines before it's live with real users, even at small
-  scale. Not designed yet.
-- **Sequencing** — **decided: deferred, not v0** (see Status above). Revisit
-  once the core loop is proven.
-- **Build location** — when this is revisited, don't assume in-app is the
-  answer. The owner explicitly floated running this on a separate platform
-  or tool instead (a plain Zoom link for live calls, a separate community
-  app/product) rather than building community infrastructure into this
-  platform. That's a live option, not a fallback of last resort.
+  `domains/platform/base44-architecture.md`. The owner previously floated
+  that a plain Zoom link may be enough; that remains a live, sensible option
+  rather than a fallback.
+- **Moderation** — **now urgent, not theoretical.** `SocialPost` already
+  supports `visibility: public`, so user-generated content can reach other
+  users today. Before real users, this needs at minimum a report path, an
+  admin remove capability, and basic community guidelines. Nothing of the
+  sort was observed in the assessment.
+- **What "operating properly" means** — the built social features were never
+  verified end-to-end. Friend requests, feed visibility rules, likes, and the
+  leaderboard all need testing against the RLS rules, especially
+  `SocialPost.visibility: specific` + `allowed_user_ids`, which is the most
+  likely place for a leak.

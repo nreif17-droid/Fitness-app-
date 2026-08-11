@@ -99,15 +99,14 @@ and operating system for a real coaching practice:
 - **Lead capture** — every signup (including free-tier self-serve users)
   who opts in (`User.marketing_opt_in`) is a prospect for the owner's real
   coaching membership, not just an app user. See `data-model.md`.
-- **Community — DEFERRED, not v0** — coursework/video, live 1:1 or group
-  calls, and a forum for paying members. The spec is decided (exclusively
-  a benefit of an active `CoachClientRelationship`, not separately
-  purchasable, not tied to Pro tier — ends the moment the coaching
-  relationship does), but the owner explicitly wants it held as an idea,
-  not built, until the core AI-coach loop is live and proven. Revisit then
-  — including whether it belongs in-app at all vs. a separate platform/tool
-  (a plain Zoom link, a separate community app). See
-  `domains/community/README.md`.
+- **Community — ACTIVE** (deferral reversed 2026-08-10). Coursework/video,
+  live 1:1 or group calls, and a forum. Note that the live app already
+  ships *social* features (feed, friends, likes, leaderboard) that are a
+  different product from the specced *coaching* community, and are open to
+  all users rather than gated to coaching clients. **The access model is
+  the open question** — see `domains/community/README.md`. Moderation
+  tooling is now a prerequisite, not a nicety, since public user-generated
+  content is already possible.
 - **Human services beyond the AI** — things that need judgment or presence
   the AI can't provide: video form/technique review, event/competition
   prep (several knowledge-base programs already have peaking blocks built

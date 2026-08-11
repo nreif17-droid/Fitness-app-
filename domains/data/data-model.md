@@ -89,29 +89,32 @@ what you were given." What ends with the relationship is everything that's
 actually tied to the relationship itself: `CoachMessage` access and
 community access (below) — not general app access.
 
-### Coaching community — DEFERRED, do not build (see `domains/community/README.md`)
+### Coaching community — ACTIVE (deferral reversed, see `domains/community/README.md`)
 
-**Decided 2026-08-10** (see `logs/decisions.md`): this section is spec, not
-a build target. Explicitly deferred until the core AI-coach loop is live
-and proven — **don't create these entities in a real schema yet.** Kept
-accurate here for when it's revisited. Coursework/video content, live 1:1
-or group calls, and a forum, for the admin's coaching practice on top of
-the AI-coach product:
+**Reversed 2026-08-10** (see `logs/decisions.md`): community is back in
+scope. Two caveats before building from this section: the live app already
+has *social* entities (`SocialPost`, `Friendship`, `PostLike`) that are a
+different product from these *coaching* entities, and the access model
+below is now contested rather than settled. Coursework/video content, live
+1:1 or group calls, and a forum, for the admin's coaching practice on top
+of the AI-coach product:
 
 `CourseContent` — `id, admin_user_id, title, type (video/article/download), body_or_url, published_at`
 `LiveSession` — `id, admin_user_id, title, format (1:1/group), scheduled_at, meeting_link, capacity (nullable)`
 `LiveSessionAttendee` — `id, live_session_id, user_id, rsvp_status`
 `ForumThread` / `ForumPost` — `id, author_user_id, thread_id (for posts), title (threads only), body, created_at`
 
-**Decided 2026-08-10** (see `logs/decisions.md`): access gating —
-community and direct admin access are bundled with an **active**
-`CoachClientRelationship`, not general app tier. Both community and
-`CoachMessage` check `status: active` specifically; dropping the
-membership (`status: ended`) removes both immediately even though the
-person keeps whatever `Entitlement` they were comped, permanently. This
-also means there's no separately-purchasable community membership for
-self-serve users in v0 — it's exclusively a benefit of being one of the
-admin's personal clients.
+**Access gating — CONTESTED, needs a decision.** The original decision was:
+community and direct admin access bundled with an **active**
+`CoachClientRelationship`, checking `status: active` specifically, so
+dropping the membership removes both immediately while the comped
+`Entitlement` persists permanently.
+
+That still holds for `CoachMessage`. It does **not** currently hold for
+community, because the live app's social features are open to all users.
+Three options are laid out in `domains/community/README.md` ("Access
+model"); the recommendation is to run the open social layer and a gated
+coaching community as two distinct things. **Not yet decided.**
 
 **Still open, not yet decided:**
 - **Video hosting and live-call infrastructure are probably not native to

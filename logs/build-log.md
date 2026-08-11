@@ -4,6 +4,38 @@ Session-by-session record. Newest entry on top.
 
 ---
 
+### 2026-08-10 — Read the live app; diagnosed it; community un-deferred
+Connected to Base44 via MCP and read Apex Vitality directly — entity
+schemas, directory tree, `generate-program/entry.ts`, `ProGate.jsx`.
+Full findings in `logs/apex-vitality-assessment.md`.
+
+Headline: the app is better built than feared (RLS is correctly
+implemented everywhere, which is the #1 AI-builder failure mode), and the
+quality problem traces to one decision in one file — `generate-program`
+asks a single unvalidated LLM call to produce all 48–60 days of a 12-week
+program, which degrades toward the later (paid) weeks, enforces nothing,
+and discards the library's real week-by-week prescriptions because
+`WorkoutProgram.days` has no week dimension.
+
+Two confirmed bugs: entitlement bypass (no server-side check in
+`generate-program`; `ProGate` is client-side only) and autoregulation that
+cannot function (no RPE/RIR field or readiness entity exists anywhere).
+
+Wrote the fix for the entitlement bypass to `logs/fixes/01-entitlement-bypass.md`
+— patch, rationale, verification plan. **Not applied:** Base44 MCP needs
+re-authentication and this session can't run OAuth.
+
+Community deferral reversed at the owner's request. Surfaced that the built
+social features are a different product from the specced coaching community
+and gate differently — access model is now contested, moderation is now
+urgent.
+
+**Next:** re-auth Base44 → apply fix 01 → verify community features
+end-to-end → decide the community access model → fixes 02/03 (RPE capture,
+per-week validated generation).
+
+---
+
 ### 2026-08-10 — Major research expansion + Base44 build playbook
 Owner asked for maximum-depth research to grow the knowledge base and for
 research into getting quality output from Base44. Added 8 files:
